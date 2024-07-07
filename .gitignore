@@ -1,0 +1,110 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environment directories
+venv/
+ENV/
+env/
+venv.bak/
+venv.bak/
+agenv/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Pyre type checker
+.pyre/
+
+# Pytest
+.cache/
+coverage/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+coverage.*.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Environments
+.venv/
+.env
+.venv/
+env/
+venv.bak/
+env.bak/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyInstaller
+# Usually these files are written by a python script from a template
+# before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db

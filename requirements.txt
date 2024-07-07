@@ -1,0 +1,6 @@
+nltk
+spacy
+transformers
+torch
+tensorflow
+datasets
