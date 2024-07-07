@@ -1,4 +1,4 @@
-from transformers import BertForSequenceClassification, Trainer, TrainingArguments, BertTokenizer
+from transformers import DistilBertForSequenceClassification, Trainer, TrainingArguments, DistilBertTokenizer
 from datasets import load_dataset
 
 def preprocess_data(dataset, tokenizer, max_length):
@@ -9,15 +9,15 @@ def preprocess_data(dataset, tokenizer, max_length):
     tokenized_dataset.set_format(type='torch', columns=['input_ids', 'attention_mask', 'label'])
     return tokenized_dataset
 
-def fine_tune_bert(dataset_name, max_length=128, epochs=3):
+def fine_tune_distilbert(dataset_name, max_length=128, epochs=3):
     # Load dataset
     dataset = load_dataset(dataset_name)
     train_dataset = dataset['train']
     test_dataset = dataset['test']
 
-    # Load pre-trained BERT tokenizer and model
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-    model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=4)
+    # Load pre-trained DistilBERT tokenizer and model
+    tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+    model = DistilBertForSequenceClassification.from_pretrained('distilbert-base-uncased', num_labels=4)
 
     # Preprocess dataset
     train_dataset = preprocess_data(train_dataset, tokenizer, max_length)
@@ -25,15 +25,15 @@ def fine_tune_bert(dataset_name, max_length=128, epochs=3):
 
     # Training arguments
     training_args = TrainingArguments(
-    output_dir='../models/results',  # Save results in the models directory
-    num_train_epochs=epochs,
-    per_device_train_batch_size=8,
-    per_device_eval_batch_size=8,
-    warmup_steps=500,
-    weight_decay=0.01,
-    logging_dir='../models/logs',    # Save logs in the models directory
-    eval_strategy='epoch'            # Updated parameter name
-)
+        output_dir='../models/results',  # Save results in the models directory
+        num_train_epochs=epochs,
+        per_device_train_batch_size=8,
+        per_device_eval_batch_size=8,
+        warmup_steps=500,
+        weight_decay=0.01,
+        logging_dir='../models/logs',    # Save logs in the models directory
+        eval_strategy='epoch'            # Updated parameter name
+    )
 
     # Initialize Trainer
     trainer = Trainer(
@@ -50,4 +50,4 @@ def fine_tune_bert(dataset_name, max_length=128, epochs=3):
 
 # Example usage
 if __name__ == "__main__":
-    fine_tune_bert('ag_news')
+    fine_tune_distilbert('ag_news')

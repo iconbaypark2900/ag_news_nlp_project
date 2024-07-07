@@ -1,9 +1,9 @@
-from transformers import BertTokenizer, BertModel
+from transformers import DistilBertTokenizer, DistilBertModel
 import torch
 
-def get_bert_embeddings(text):
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-    model = BertModel.from_pretrained('bert-base-uncased')
+def get_distilbert_embeddings(text):
+    tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+    model = DistilBertModel.from_pretrained('distilbert-base-uncased')
     inputs = tokenizer(text, return_tensors='pt')
     outputs = model(**inputs)
     return outputs.last_hidden_state
