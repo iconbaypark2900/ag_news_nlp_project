@@ -27,12 +27,17 @@ def fine_tune_distilbert(dataset_name, max_length=128, epochs=3):
     training_args = TrainingArguments(
         output_dir='../models/results',  # Save results in the models directory
         num_train_epochs=epochs,
-        per_device_train_batch_size=8,
-        per_device_eval_batch_size=8,
+        per_device_train_batch_size=8,  # Fixed batch size
+        per_device_eval_batch_size=8,   # Fixed batch size
         warmup_steps=500,
         weight_decay=0.01,
         logging_dir='../models/logs',    # Save logs in the models directory
-        eval_strategy='epoch'            # Updated parameter name
+        evaluation_strategy='epoch',     # Corrected eval_strategy to evaluation_strategy
+        learning_rate=5e-5,              # Fixed learning rate
+        gradient_accumulation_steps=2,   # Accumulate gradients over 2 steps
+        save_total_limit=2,              # Limit the total amount of checkpoints
+        save_steps=500,                  # Save checkpoint every 500 steps
+        logging_steps=100                # Log every 100 steps
     )
 
     # Initialize Trainer
